@@ -46,9 +46,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -57,10 +57,15 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://localhost:3000",
+    "http://localhost:3000",  # React app running on this domain
 ]
 
-CORS_ALLOW_CREDENTIALS: True
+CORS_ALLOW_CREDENTIALS = True
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',  # Backend URL
+    'localhost',  # Backend URL
+]
 
 MEDIA_URL = '/media/'
 

@@ -1,7 +1,6 @@
 import { Text, VStack, Flex, Box, Heading, HStack, Image, Button } from '@chakra-ui/react'
 import { useState, useEffect } from "react";
 import { get_user_profile_data} from "../api/endpoints";
-import { SERVER_URL } from "../constants/constants";
 
 const UserProfile = () => {
 
@@ -44,7 +43,6 @@ const UserDetails = ({username}) => {
                 setProfileImage(data.profile_image)
                 setFollowerCount(data.follower_count)
                 setFollowingCount(data.following_count)
-                console.log(SERVER_URL, data.profile_image)
             } catch {
                 console.log('error')
             } finally {
@@ -62,7 +60,11 @@ const UserDetails = ({username}) => {
             <Heading>@{username}</Heading>
             <HStack gap='20px'>
                 <Box boxSize='150px' border='2px solid' borderRadius='full' borderColor='grey.700' bg='white' overflow='hidden'>
-                    <Image src={loading ? '' : `${SERVER_URL}${profileImage}`} boxSize='100%' objectFit='cover' />  
+                <Image
+                    src={loading ? '' : `{http://127.0.0.1:8000/api/}/${profileImage}`}
+                    boxSize="100%"
+                    objectFit="cover"
+                /> 
                 </Box>
                 <VStack>
                     <HStack gap='20px' fontSize='18px'>

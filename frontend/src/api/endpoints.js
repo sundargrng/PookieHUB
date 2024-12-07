@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { SERVER_URL } from '../constants/constants'
 
-const BASE_URL = SERVER_URL
+const BASE_URL = 'http://127.0.0.1:8000/api/'
 
 const api = axios.create({
     baseURL:BASE_URL,
@@ -9,6 +8,6 @@ const api = axios.create({
 })
 
 export const get_user_profile_data = async (username) => {
-    const response = await api.get(`/user_data/${username}/`);
+    const response = await api.get(`user_data/${username}/`);
     return response.data
 }
